@@ -40,7 +40,13 @@ def main():
             
             if st.button("분석 시작"):
                 with st.spinner("분석 중..."):
-                    prompt = f"{analysis_type}:\n{text_content}"
+                    prompt = f"""
+                    다음 논문을 한국어로 {analysis_type}해주세요. 
+                    전문적인 용어는 원문 그대로 표기하고 괄호 안에 한국어 설명을 추가해주세요.
+                    
+                    논문 내용:
+                    {text_content}
+                    """
                     response = model.generate_content(prompt)
                     st.write(response.text)
                     
